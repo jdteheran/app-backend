@@ -12,6 +12,10 @@ router.post('/register', (request, response) => {
 
             let body = request.body
 
+            if (body.password) {
+                if (body.password.length < 6) return response.json({ message: 'la contraseña debe tener almenos 6 caracteres'})
+            }
+
             const salt = await bcrypt.genSalt(Number(process.env.HASH_SALT))
             const password = await bcrypt.hash(body.password, salt)
 

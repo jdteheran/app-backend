@@ -23,7 +23,7 @@ app.use(verify_token)
 app.use('/', index_route)
 app.use('/api', user_route)
 
-//Server Listening
-app.listen(port, () => {
-    console.log('Servidor corriendo en el puerto:', port);
-})
+module.exports = {
+    app,
+    port
+}
